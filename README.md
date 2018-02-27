@@ -7,6 +7,7 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 - `StudentInfo` - Create and Diaplay n student Details.
 - `Random` - Play Game(Guess the Number).
 - `StackDemo` - Implementing Stack using Java.
+- `MergeSort` - Implementing MergeSort algorithm and displaying the time of execution for n input.
 ...
 MORE ARE COMMING :)
 
