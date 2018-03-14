@@ -8,6 +8,7 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 - `Random` - Play Game(Guess the Number).
 - `StackDemo` - Implementing Stack using Java.
 - `MergeSort` - Implementing MergeSort algorithm and displaying the time of execution for n input.
+- `StaffDemo` - Read Employee Details and Display it.
 ...
 MORE ARE COMMING :)
 
