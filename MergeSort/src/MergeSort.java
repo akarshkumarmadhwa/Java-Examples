@@ -3,70 +3,68 @@ Author: Debjyoti Guha
 Date: 28/02/2018
 Description: MergeSort Implementation
 */
-import java.util.Random;
 import java.util.Scanner;
-public class MergeSort {
-static int max=10000;
-void merge( int[] array,int low, int mid,int high)
-{
-    int i=low;
-    int j=mid+1;
-    int k=low;
-    int[]resarray;
-    resarray=new int[max];
-    while(i<=mid&&j<=high)
-    {
-        if(array[i]<array[j])
-        {
-            resarray[k]=array[i];
-            i++;
-            k++;
-        }
-        else
-        {
-            resarray[k]=array[j];
-            j++;
-            k++;
+import java.util.Random;
+class MergeS{
+   void MergeSort(int a[],int low,int high){
+       int mid;
+        if(low<high){
+            mid = (low+high)/2;
+           MergeSort(a,low,mid);
+           MergeSort(a,mid+1,high);
+           Merge(a,low,high,mid);
         }
     }
-    while(i<=mid)
-        resarray[k++]=array[i++];
-    while(j<=high)
-        resarray[k++]=array[j++];
-    for(int m=low;m<=high;m++)
-        array[m]=resarray[m];
-}
-void sort( int[] array,int low,int high)
-{
-    if(low<high)
-    {
-        int mid=(low+high)/2;
-        sort(array,low,mid);
-        sort(array,mid+1,high);
-        merge(array,low,mid,high);
+    private void Merge(int a[],int low,int high,int mid){
+       int[] b = new int[50000];
+       int h = low;
+       int i = low;
+       int j = mid+1;
+       while ((h<=mid) && (j<=high)){
+           if(a[h]<=a[j]){
+               b[i] = a[h];
+               h++;
+           }
+           else{
+               b[i] = a[j];
+               j++;
+           }
+           i++;
+       }
+       if(h>mid){
+           for (int k = j; k<=high; k++){
+               b[i] = a[k];
+               i++;
+           }
+       }
+       else{
+           for (int k = h; k<=mid; k++){
+               b[i] = a[k];
+               i++;
+           }
+       }
+        for (int k = low; k<=high; k++){
+            a[k] = b[k];
+        }
     }
 }
-public static void main(String[] args) {
-    int[] array;
-    int i;
-    System.out.println("Enter the array size");
-    Scanner sc =new Scanner(System.in);
-    int n=sc.nextInt();
-    array= new int[max];
-    Random generator=new Random();
-    for( i=0;i<n;i++)
-    array[i]=generator.nextInt(20);
-    System.out.println("Array before sorting");
-    for( i=0;i<n;i++)
-    System.out.println(array[i]+" ");
-    long startTime=System.nanoTime();
-    MergeSort m=new MergeSort();
-    m.sort(array,0,n-1);
-    long stopTime=System.nanoTime();
-    long elapseTime=(stopTime-startTime);
-    System.out.println("Time taken to sort" +elapseTime +"nanoseconds");
-    System.out.println("Sorted array is");
-    for(i=0;i<n;i++)
-        System.out.println(array[i]);
+public class MergeDemo {
+    public static void main(String args[]){
+        Random r = new Random();
+        Scanner s = new Scanner(System.in);
+        MergeS M = new MergeS();
+        System.out.println("How many elements? ");
+        int n = s.nextInt();
+        int[] a = new int[n];
+        for (int i = 0;i<n;i++)
+            a[i] = r.nextInt(n);
+        long st = System.nanoTime();
+        M.MergeSort(a,0,n-1);
+        long et = System.nanoTime();
+        System.out.println("Elements after Sorting");
+        for (int i = 0;i<n;i++)
+            System.out.println(a[i]);
+        System.out.println("Elapsed Time "+(et-st)+" ns");
     }
 }
+
