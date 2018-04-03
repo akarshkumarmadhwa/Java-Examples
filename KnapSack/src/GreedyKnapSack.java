@@ -34,6 +34,10 @@ class Knapsack {
                     w[j] = w[j+1];
                     w[j+1] = swap;
 
+		    swap = div[j];
+                    div[j] = div[j+1];
+                    div[j+1] = swap;
+
                 }
             }
 
